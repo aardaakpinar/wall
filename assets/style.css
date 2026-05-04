@@ -4,17 +4,29 @@
     box-sizing: border-box;
 }
 
-:root {
-    --background: #0f0f0f;
-    --foreground: #fafafa;
-    --card: #171717;
-    --card-foreground: #fafafa;
+:root { 
+    --background: #fafafa;
+    --foreground: #0f0f0f;
+    --card: #ffffff;
+    --card-foreground: #0f0f0f;
     --primary: #7c3aed;
-    --primary-foreground: #fafafa;
-    --muted: #262626;
-    --muted-foreground: #a3a3a3;
-    --border: #262626;
+    --primary-foreground: #ffffff;
+    --muted: #f4f4f5;
+    --muted-foreground: #525252;
+    --border: #e5e5e5;
     --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0f0f0f;
+        --foreground: #fafafa;
+        --card: #171717;
+        --card-foreground: #fafafa;
+        --muted: #262626;
+        --muted-foreground: #a3a3a3;
+        --border: #262626;
+    }
 }
 
 body {
@@ -65,10 +77,6 @@ body {
     transition:
         border-color 0.2s ease,
         transform 0.2s ease;
-}
-
-.card:hover {
-    border-color: var(--primary);
 }
 
 /* Hero Card */
