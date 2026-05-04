@@ -7,10 +7,9 @@
   Wall is a modular, YAML-driven Bento Grid portfolio engine.
 </p>
 
-Wall is a fully configurable, static-first Bento Grid engine. It turns YAML into a modern UI without frameworks or backend dependencies...
+Wall is a fully configurable, static-first Bento Grid engine. It turns YAML into a modern UI without frameworks or backend dependencies.
 
 ---
-
 
 ## Features
 
@@ -20,7 +19,7 @@ Wall is designed to be minimal in concept but powerful in composition.
   Build entire portfolios using only a single `config.yaml` file.
 
 * **Static-first rendering**
-  No backend, no database—everything runs in the browser.
+  No backend, no database. Everything runs in the browser.
 
 * **Modular Bento Grid system**
   Each section (hero, links, projects, images) is a reusable card module.
@@ -31,14 +30,17 @@ Wall is designed to be minimal in concept but powerful in composition.
 * **SEO ready**
   Dynamic meta tag generation (Open Graph, Twitter Cards, favicon support).
 
-* **Zero-framework frontend**
-  Pure JavaScript implementation—no React, Vue, or build step required.
-
 * **Extensible card system**
   Easily add new card types via a simple renderer map.
 
 * **Responsive by design**
   Works seamlessly across desktop, tablet, and mobile layouts.
+
+---
+
+## Screenshot
+
+![Wall](assets/example.png)
 
 ---
 
@@ -52,28 +54,6 @@ Wall reads a single configuration file (`config.yaml`) and dynamically generates
 4. Injects SEO metadata dynamically
 5. Renders cards based on their `type`
 6. Mounts everything into `.bento-grid`
-
----
-
-## Card System
-
-Each card is defined in YAML and rendered through a modular renderer:
-
-```js
-const cardRenderers = {
-  hero,
-  links,
-  projects,
-  image,
-};
-```
-
-Supported card types:
-
-* `hero` → Profile introduction section
-* `links` → Navigation / social links
-* `projects` → Portfolio project grid items
-* `image` → Visual highlight cards
 
 ---
 
@@ -110,6 +90,7 @@ cards:
 
 Wall is still actively under development. The long-term goal is to keep it:
 
+* online 
 * ultra-lightweight
 * dependency-free
 * fully declarative
@@ -121,7 +102,8 @@ Planned improvements include:
 * markdown-supported project descriptions
 * plugin-based card extensions
 * better layout presets (masonry, dense, asymmetric grids)
-* CLI tool for scaffolding new portfolios
+* drag and drop grid editor
+* live YAML editor (CMS mode)
 
 ---
 
