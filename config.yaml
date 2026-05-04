@@ -1,0 +1,61 @@
+seo:
+  title: "Wall"
+  description: "Wall is a modular, YAML-driven Bento Grid portfolio engine."
+  keywords: "wall, yaml, bento grid, portfolio, static site generator"
+  favicon: "assets/logo.png"
+  url: "https://github.com/aardaakpinar/wall"
+
+profile:
+  name: Wall Engine
+  title: YAML-Based Bento Grid System
+  description: >
+    Wall is a fully configurable, static-first Bento Grid engine.
+    It turns YAML into a modern UI without frameworks or backend dependencies.
+
+  avatar: assets/logo.png
+
+cards:
+  - type: hero
+
+  - type: links
+    title: Project Links
+    items:
+      - name: GitHub Repository
+        url: https://github.com/aardaakpinar/wall
+        icon: bxl bx-github
+
+      - name: Live Demo
+        url: http://aardaakpinar.github.io/wall
+        icon: bx bx-link
+
+      - name: Documentation
+        url: https://github.com/aardaakpinar/wall/docs
+        icon: bx bx-book
+
+  - type: image
+    image: https://picsum.photos/800/500
+    alt: "Wall Bento Grid Preview"
+    url: https://github.com/aardaakpinar/wall
+    span: 2
+
+  - type: projects
+    title: Features Showcase
+    items:
+      - name: YAML Driven UI
+        description: Everything is controlled via a single config.yaml file.
+        tags: [YAML, Config, UI]
+        url: https://github.com/aardaakpinar/wall
+
+      - name: Bento Grid Engine
+        description: Responsive grid system inspired by modern UI design.
+        tags: [Grid, Layout, CSS]
+        url: https://github.com/aardaakpinar/wall
+
+      - name: Plugin Renderer System
+        description: Each card type is a pluggable renderer function.
+        tags: [JS, Architecture]
+        url: https://github.com/aardaakpinar/wall
+
+  - type: image
+    image: https://picsum.photos/800/401
+    alt: "Grid Example 1"

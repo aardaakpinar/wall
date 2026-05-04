@@ -1,180 +1,131 @@
-# 🧱 Wall
+<p align="center">
+  <img width="100px" src="assets/logo.png" />
+  <h1 align="center">Wall</h1>
+</p>
 
-**Wall**, YAML tabanlı yapılandırma ile tamamen özelleştirilebilen, modüler **Bento Grid portfolio / link sayfası engine’idir**.
+<p align="center">
+  Wall is a modular, YAML-driven Bento Grid portfolio engine.
+</p>
 
-Statik olarak çalışır, backend gerektirmez ve özellikle **GitHub Pages** üzerinde hızlı ve kolay yayınlanmak için tasarlanmıştır.
-
----
-
-## ✨ Özellikler
-
-* 🧩 **Tamamen Card-Based Yapı**
-* 🧱 **Bento Grid Layout Engine**
-* ⚙️ **YAML ile tam kontrol**
-* 🖼️ **Image Card**
-* ⚡ **Ultra hızlı (vanilla JS)**
-* 📱 **Tam responsive**
-* 🎯 **Minimal ve modern UI**
+Wall is a fully configurable, static-first Bento Grid engine. It turns YAML into a modern UI without frameworks or backend dependencies...
 
 ---
 
-## 🖼️ Tasarım Yaklaşımı
 
-Wall, modern web tasarımındaki **Bento Grid sistemini** temel alır.
+## Features
 
-Sayfa tamamen “kartlardan oluşan bir canvas” gibi çalışır:
+Wall is designed to be minimal in concept but powerful in composition.
 
-Desteklenen kart türleri:
+* **YAML-driven architecture**
+  Build entire portfolios using only a single `config.yaml` file.
 
-* Hero (profil kartı)
-* Socials (opsiyonel genişletme)
-* Links
-* Projects
-* Image Card
+* **Static-first rendering**
+  No backend, no database—everything runs in the browser.
 
-Bu yapı sayesinde sayfa:
+* **Modular Bento Grid system**
+  Each section (hero, links, projects, images) is a reusable card module.
 
-* Sabit değil
-* Tamamen config-driven
-* CMS benzeri esnek bir sisteme dönüşür
+* **Theme customization**
+  Fully customizable design tokens via YAML (colors, radius, typography).
 
----
+* **SEO ready**
+  Dynamic meta tag generation (Open Graph, Twitter Cards, favicon support).
 
-## 🧠 Kart Sistemi
+* **Zero-framework frontend**
+  Pure JavaScript implementation—no React, Vue, or build step required.
 
-Her şey `cards[]` içinde tanımlanır.
+* **Extensible card system**
+  Easily add new card types via a simple renderer map.
 
-### Desteklenen kart tipleri
-
-| Type       | Açıklama                |
-| ---------- | ----------------------- |
-| `hero`     | Profil kartı            |
-| `links`    | Link listesi            |
-| `projects` | Proje kartları          |
-| `image`    | İmage kartları          |
-| `custom`   | Genişletilebilir yapı   |
+* **Responsive by design**
+  Works seamlessly across desktop, tablet, and mobile layouts.
 
 ---
 
-## 🧾 Image Card Özellikleri 🆕
+## How It Works
 
-Image card sistemi:
+Wall reads a single configuration file (`config.yaml`) and dynamically generates a complete Bento Grid layout.
 
-* Background image destekler
-* Opsiyonel link (clickable card)
-* Opsiyonel alt text (sol alt köşe overlay)
-* Grid span desteği
+1. Loads configuration via `fetch`
+2. Parses YAML using `jsyaml`
+3. Applies theme variables to CSS root
+4. Injects SEO metadata dynamically
+5. Renders cards based on their `type`
+6. Mounts everything into `.bento-grid`
 
-### Örnek:
+---
 
-```yaml
-- type: image
-  image: https://picsum.photos/800/400
-  url: https://github.com
-  alt: My GitHub
-  span: 2
+## Card System
+
+Each card is defined in YAML and rendered through a modular renderer:
+
+```js
+const cardRenderers = {
+  hero,
+  links,
+  projects,
+  image,
+};
 ```
 
-## ⚙️ Yapılandırma (YAML)
+Supported card types:
 
-Tüm sayfa artık tek bir `config.yaml` üzerinden yönetilir:
+* `hero` → Profile introduction section
+* `links` → Navigation / social links
+* `projects` → Portfolio project grid items
+* `image` → Visual highlight cards
+
+---
+
+## Example Config Structure
 
 ```yaml
-theme:
-  background: "#0f0f0f"
-  foreground: "#fafafa"
-  primary: "#23b5b5"
-  radius: "16px"
-
 profile:
-  name: Arda Akpınar
-  title: Developer | Cyber Security
-  description: Software developer from Istanbul...
-  avatar: https://example.com/avatar.png
+  name: Arda
+  title: Developer
+  description: Building minimal and fast web experiences.
+  avatar: assets/avatar.png
   socials:
     - name: github
-      url: https://github.com/user
+      url: https://github.com/username
+
+theme:
+  background: "#0f0f0f"
+  foreground: "#ffffff"
+  radius: "16px"
 
 cards:
   - type: hero
-
   - type: links
     title: Links
     items:
       - name: GitHub
-        url: https://github.com/user
-        icon: bx-github
-
-  - type: image
-    image: https://picsum.photos/800/400
-    alt: Workspace
-    span: 2
-
-  - type: empty
-    span: 1
-
-  - type: projects
-    title: Projects
-    items:
-      - name: Project X
-        description: Awesome project
-        tags: [JS, Node]
-        url: https://example.com
+        url: https://github.com
+        icon: bxl-github
 ```
 
 ---
 
-## 🧩 Renderer Mimarisi
+## Future Plans
 
-Wall artık **plugin-like renderer system** kullanır:
+Wall is still actively under development. The long-term goal is to keep it:
 
-* Her card type → bir renderer function
-* Yeni card eklemek → sadece JS tarafında yeni renderer
+* ultra-lightweight
+* dependency-free
+* fully declarative
+* and easy to deploy anywhere (GitHub Pages, Vercel, Netlify)
 
-Örnek:
+Planned improvements include:
 
-* `hero`
-* `links`
-* `projects`
-* `image`
-
----
-
-## 🚀 Kurulum
-
-```bash
-git clone https://github.com/username/wall
-cd wall
-```
-
-Config düzenle:
-
-```bash
-config.yaml
-```
+* animation system for card transitions
+* markdown-supported project descriptions
+* plugin-based card extensions
+* better layout presets (masonry, dense, asymmetric grids)
+* CLI tool for scaffolding new portfolios
 
 ---
 
-## 🎯 Proje Felsefesi
+## License
 
-Wall’un amacı:
-
-* UI framework değil, **content engine** olmak
-* Tasarımı koddan ayırmak
-* “YAML = UI” yaklaşımını mümkün kılmak
-* Minimal ama genişletilebilir bir sistem sunmak
-
----
-
-## 🔮 Gelecek Planları
-
-* 🧩 Plugin system (`registerCard`)
-* 🧱 Drag & drop grid editor
-* 🎨 Live YAML editor (CMS mode)
-* 🪟 Masonry / auto-layout engine
-
----
-
-## 📄 Lisans
-
-MIT License
+MIT © Arda
+[http://aardaakpinar.github.io](http://aardaakpinar.github.io)
