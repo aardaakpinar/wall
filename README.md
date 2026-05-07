@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100px" src="assets/logo.png" />
+  <img width="100px" src="assets/img/logo.png" />
   <h1 align="center">Wall</h1>
 </p>
 
@@ -28,7 +28,7 @@ Wall is designed to be minimal in concept but powerful in composition.
   Fully customizable design tokens via YAML (colors, radius, typography).
 
 * **SEO ready**
-  Dynamic meta tag generation (Open Graph, Twitter Cards, favicon support).
+  Dynamic meta tag generation (Open Graph, Twitter main, favicon support).
 
 * **Extensible card system**
   Easily add new card types via a simple renderer map.
@@ -40,7 +40,7 @@ Wall is designed to be minimal in concept but powerful in composition.
 
 ## Screenshot
 
-![Wall](assets/example.png)
+![Wall](assets/img/example.png)
 
 ---
 
@@ -52,7 +52,7 @@ Wall reads a single configuration file (`config.yaml`) and dynamically generates
 2. Parses YAML using `jsyaml`
 3. Applies theme variables to CSS root
 4. Injects SEO metadata dynamically
-5. Renders cards based on their `type`
+5. Renders main based on their `type`
 6. Mounts everything into `.bento-grid`
 
 ---
@@ -74,7 +74,7 @@ theme:
   foreground: "#ffffff"
   radius: "16px"
 
-cards:
+main:
   - type: hero
   - type: links
     title: Links
