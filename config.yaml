@@ -2,10 +2,12 @@ profile:
   name: Wall Engine
   title: YAML-Based Bento Grid System
   description: >
-    Wall is a fully configurable, static-first Bento Grid engine.
-    It turns YAML into a modern UI without frameworks or backend dependencies.
-
+    Build a fast, static Bento Grid portfolio from a single YAML file.
+    Wall keeps content, layout, links, images, and theme tokens easy to edit.
   avatar: assets/img/logo.png
+  socials:
+    - name: github
+      url: https://github.com/aardaakpinar/wall
 
 main:
   - type: hero
@@ -14,34 +16,50 @@ main:
     title: Project Links
     items:
       - name: Live Demo
-        url: http://aardaakpinar.github.io/wall
+        url: https://aardaakpinar.github.io/wall
         icon: bx bx-link
 
-      - name: Documentation
+      - name: Repository
         url: https://github.com/aardaakpinar/wall
-        icon: bx bx-book
+        icon: bxl bx-github
 
   - type: image
-    image: https://picsum.photos/800/500
+    image: assets/img/example.png
     alt: "Wall Bento Grid Preview"
     url: https://github.com/aardaakpinar/wall
-    span: 2
-
 
   - type: title
-    text: Feature
+    text: Features
 
-  - type: text
-    title: Features Showcase
+  - type: projects
     items:
       - name: YAML Driven UI
         description: Everything is controlled via a single config.yaml file.
         url: https://github.com/aardaakpinar/wall
+        tags:
+          - YAML
+          - Content
 
       - name: Bento Grid Engine
-        description: Responsive grid system inspired by modern UI design.
+        description: Cards are rendered in order from the main list.
         url: https://github.com/aardaakpinar/wall
+        tags:
+          - Grid
+          - Static
 
-      - name: Plugin Renderer System
-        description: Each card type is a pluggable renderer function.
+      - name: CDN Ready
+        description: Use Wall from jsDelivr with only index.html and config.yaml.
         url: https://github.com/aardaakpinar/wall
+        tags:
+          - CDN
+          - Fast
+
+      - name: HTML Meta Control
+        description: SEO and social preview tags stay in index.html for reliable sharing.
+        url: https://github.com/aardaakpinar/wall
+        tags:
+          - SEO
+          - HTML
+
+footer:
+  enabled: true

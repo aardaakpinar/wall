@@ -13,11 +13,15 @@ export function createProjects(card) {
           ${p.description}
         </p>
 
-        <div class="project-tags">
-          ${p.tags.map(t => `
-            <span class="tag">${t}</span>
-          `).join("")}
-        </div>
+        ${
+          p.tags?.length
+            ? `<div class="project-tags">
+                ${p.tags.map(t => `
+                  <span class="tag">${t}</span>
+                `).join("")}
+              </div>`
+            : ""
+        }
 
       </a>
     </div>

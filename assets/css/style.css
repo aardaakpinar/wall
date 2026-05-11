@@ -1,0 +1,12 @@
+@import url('https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css');
+@import url('https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css');
+@import url('https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css');
+
+@import url('./base.css');
+@import url('./layout.css');
+@import url('./components/card.css');
+@import url('./components/hero.css');
+@import url('./components/image.css');
+@import url('./components/link.css');
+@import url('./components/project.css');
+@import url('./components/title.css');

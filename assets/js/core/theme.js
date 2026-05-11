@@ -14,9 +14,31 @@ export function applyTheme(theme) {
     radius: "--radius",
   };
 
-  Object.entries(map).forEach(([key, cssVar]) => {
-    if (theme?.[key]) {
-      root.style.setProperty(cssVar, theme[key]);
-    }
-  });
+  const applyTokens = (tokens = {}) => {
+    Object.entries(map).forEach(([key, cssVar]) => {
+      if (tokens?.[key]) {
+        root.style.setProperty(cssVar, tokens[key]);
+      }
+    });
+  };
+
+  if (theme?.light || theme?.dark) {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applyMode = () => {
+      const fallback = theme.light || theme.dark || {};
+      const mode = media.matches
+        ? theme.dark || fallback
+        : theme.light || fallback;
+
+      applyTokens(mode);
+      root.style.colorScheme = media.matches ? "dark" : "light";
+    };
+
+    applyMode();
+    media.addEventListener?.("change", applyMode);
+    return;
+  }
+
+  applyTokens(theme);
 }

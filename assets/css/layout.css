@@ -1,0 +1,41 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 640px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 48px;
+    color: var(--muted-foreground);
+    font-size: 13px;
+}
+
+.footer a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

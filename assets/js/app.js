@@ -1,25 +1,21 @@
 import { loadConfig } from "./core/config.js";
 import { applyTheme } from "./core/theme.js";
-import { applySEO } from "./core/seo.js";
 import { cardRenderers } from "./core/render.js";
+import { createLayout, createFooter } from "./core/layout.js";
 
 async function init() {
   const config = await loadConfig();
 
-  const grid = document.querySelector(".bento-grid");
-
   if (config.theme) {
     applyTheme(config.theme);
   }
-
-  if (config.seo) {
-    applySEO(config.seo);
-  }
-
+  
   if (!config.main) {
     console.error("main zorunlu!");
     return;
   }
+
+  const { container, grid } = createLayout();
 
   const html = config.main
     .map(card => {
@@ -35,6 +31,12 @@ async function init() {
     .join("");
 
   grid.innerHTML = html;
+
+  const footer = createFooter(config);
+
+  if (footer) {
+    container.appendChild(footer);
+  }
 }
 
 init();
