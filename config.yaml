@@ -56,7 +56,6 @@ main:
 
       - name: HTML Meta Control
         description: SEO and social preview tags stay in index.html for reliable sharing.
-        url: https://github.com/aardaakpinar/wall
         tags:
           - SEO
           - HTML
