@@ -1,7 +1,7 @@
 export function createProjects(card) {
   return card.items.map(p => `
     <div class="card project-card">
-      <a href="${p.url}" class="project-item-single">
+      <a href="${p.url || '#'}" class="project-item-single">
 
         <div class="project-header">
           <span class="project-name">
