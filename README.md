@@ -4,106 +4,106 @@
 </p>
 
 <p align="center">
-  YAML ile yönetilen, statik ve modüler bir Bento Grid portfolio sistemi.
+  A static and modular Bento Grid portfolio system powered by YAML.
 </p>
 
-Wall, tek bir `config.yaml` dosyasından modern bir portfolio arayüzü üretir. Backend, build adımı veya framework gerektirmez; sayfa tarayıcıda YAML dosyasını okur, kartları oluşturur ve temayı CSS değişkenleriyle uygular.
+Wall generates a modern portfolio interface from a single `config.yaml` file. It requires no backend, build step, or framework. The page runs in the browser, reads the YAML file, builds the cards, and applies themes using CSS variables.
 
 ---
 
-## Özellikler
+## Features
 
-Wall'de sayfanın içeriği `config.yaml` dosyasındaki birkaç ana bölümle tarif edilir:
+The content of the page is defined through several key sections in `config.yaml`:
 
-- **`profile`:** Hero kartında görünen isim, başlık, açıklama, avatar ve sosyal link bilgilerini taşır.
-- **`main`:** Sayfanın kart akışıdır. Kartların sırası YAML listesindeki sırayla belirlenir.
-- **`type`:** Her `main` öğesinin hangi kart renderer'ı ile çizileceğini belirler. Şu an `hero`, `links`, `projects`, `image` ve `title` desteklenir.
-- **`links.items`:** Hızlı bağlantıları `name`, `url` ve Boxicons `icon` sınıfıyla tanımlar.
-- **`projects.items`:** Feature, proje veya içerik kartlarını `name`, `description`, `url` ve isteğe bağlı `tags` alanıyla tanımlar.
-- **`image`:** Görsel kartları `image`, `alt` ve isteğe bağlı `url` alanlarıyla ekler.
-- **`title`:** Grid içinde bölüm ayırıcı başlık üretir.
-- **`theme`:** Renk ve radius değerlerini YAML'den CSS değişkenlerine aktarır.
-- **`footer.enabled`:** Varsayılan Wall footer'ını açıp kapatır.
-- **CDN desteği:** CSS ve JS dosyaları jsDelivr üzerinden çekilerek sadece `index.html` ve `config.yaml` ile yayın yapılabilir.
-- **HTML meta yönetimi:** SEO, Open Graph, Twitter Card, canonical ve favicon etiketleri YAML'den değil doğrudan `index.html` içinden güncellenir.
+* **`profile`:** Contains the name, title, description, avatar, and social links shown in the hero card.
+* **`main`:** Defines the card flow of the page. The order of cards follows the YAML list order.
+* **`type`:** Determines which card renderer is used for each `main` item. Currently supports `hero`, `links`, `projects`, `image`, and `title`.
+* **`links.items`:** Defines quick links using `name`, `url`, and Boxicons `icon` classes.
+* **`projects.items`:** Defines feature/project/content cards using `name`, `description`, `url`, and optional `tags`.
+* **`image`:** Adds image cards with `image`, `alt`, and optional `url`.
+* **`title`:** Creates section separator headings inside the grid.
+* **`theme`:** Maps color and radius values from YAML to CSS variables.
+* **`footer.enabled`:** Enables or disables the default Wall footer.
+* **CDN support:** CSS and JS files can be loaded via jsDelivr, allowing deployment with only `index.html` and `config.yaml`.
+* **HTML meta management:** SEO, Open Graph, Twitter Card, canonical, and favicon tags are managed directly in `index.html`, not YAML.
 
 ---
 
-## Ekran Görüntüsü
+## Screenshot
 
 ![Wall](assets/img/example.png)
 
 ---
 
-## Nasıl Çalışır?
+## How It Works
 
-1. `index.html`, Wall JS dosyasını ES module olarak yükler. Bu dosya yerel `assets/js/app.js` veya CDN URL'i olabilir.
-2. `loadConfig()`, `config.yaml` dosyasını `fetch` ile okur ve `js-yaml` ile parse eder.
-3. `applyTheme()`, varsa `theme` değerlerini CSS değişkenlerine aktarır.
-4. `createLayout()`, `.container` ve `.bento-grid` ana iskeletini oluşturur.
-5. `config.main` içindeki her kart, kendi `type` değerine göre `cardRenderers` map üzerinden ilgili component fonksiyonuna gönderilir.
-6. Oluşan HTML grid içine basılır.
-7. `footer.enabled: false` verilmediyse varsayılan Wall footer'ı eklenir.
+1. `index.html` loads the Wall JS file as an ES module (local or CDN version).
+2. `loadConfig()` fetches `config.yaml` and parses it using `js-yaml`.
+3. `applyTheme()` maps theme values to CSS variables if defined.
+4. `createLayout()` builds the `.container` and `.bento-grid` structure.
+5. Each item in `config.main` is rendered via the appropriate function in the `cardRenderers` map.
+6. The generated HTML is injected into the grid.
+7. If `footer.enabled` is not false, the default Wall footer is added.
 
-> Not: `config.yaml` dosyası `fetch` ile okunduğu için projeyi doğrudan `file://` ile açmak yerine küçük bir lokal sunucuda çalıştırmanız gerekir.
+> Note: Since `config.yaml` is loaded via `fetch`, you must run the project on a local server instead of opening it directly with `file://`.
 
 ---
 
-## HTML ile Hızlı Kullanım
+## Quick Usage with HTML
 
-Wall'i kendi projenize kopyalamadan kullanmak için CSS ve JS dosyalarını CDN üzerinden ekleyebilirsiniz. Bu kullanımda sayfanızda yalnızca bir `index.html` ve aynı dizinde bir `config.yaml` bulunması yeterlidir.
+You can use Wall via CDN without copying the project. You only need an `index.html` and a `config.yaml` file in the same directory.
 
 ```html
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO ve paylaşım etiketlerini burada güncelleyin -->
-  <title>Site Başlığı</title>
-  <meta name="description" content="Site açıklaması">
+  <!-- Update SEO and sharing metadata here -->
+  <title>Site Title</title>
+  <meta name="description" content="Site description">
   <meta name="keywords" content="portfolio, bento, personal site">
-  <meta name="author" content="Adınız">
+  <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0f0f0f">
 
   <link rel="canonical" href="https://example.com/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Site Başlığı">
-  <meta property="og:description" content="Site açıklaması">
+  <meta property="og:title" content="Site Title">
+  <meta property="og:description" content="Site description">
   <meta property="og:url" content="https://example.com/">
   <meta property="og:image" content="https://example.com/preview.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Site Başlığı">
-  <meta name="twitter:description" content="Site açıklaması">
+  <meta name="twitter:title" content="Site Title">
+  <meta name="twitter:description" content="Site description">
   <meta name="twitter:image" content="https://example.com/preview.png">
 
   <link rel="icon" href="favicon.png">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/css/style.css">
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/assets/js/app.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/js/app.js"></script>
 </body>
 </html>
 ```
 
-Bu yöntem hızlı yayın için idealdir. İçerik ve tema `config.yaml` dosyasından gelir; meta etiketleri ise arama motorları ve sosyal paylaşım önizlemeleri tarafından daha sağlıklı okunması için HTML içinde tutulur.
+This approach is ideal for fast deployment. All content and theme settings come from `config.yaml`, while meta tags remain in HTML for better SEO and social preview support.
 
-CDN adresleri:
+CDN URLs:
 
 ```text
-https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/assets/css/style.css
-https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/assets/js/app.js
+https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/css/style.css
+https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/js/app.js
 ```
 
 ---
 
-## Proje Yapısı
+## Project Structure
 
 ```text
 .
@@ -123,29 +123,29 @@ https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/assets/js/app.js
 └── README.md
 ```
 
-`assets/style.css` eski tek dosyalı stil çıktısını içerir. Aktif HTML şu anda `assets/css/style.css` dosyasını kullanır.
+`assets/style.css` contains the legacy single-file stylesheet. The current build uses `assets/css/style.css`.
 
 ---
 
-## Yerelde Çalıştırma
+## Running Locally
 
-Bu repo için kurulum gerekmez. Herhangi bir statik dosya sunucusu yeterlidir:
+No installation is required. Any static server will work:
 
 ```bash
 python -m http.server 8000
 ```
 
-Ardından tarayıcıda şu adresi açın:
+Then open:
 
 ```text
 http://localhost:8000
 ```
 
-Alternatif olarak VS Code Live Server, GitHub Pages, Netlify veya Vercel gibi statik hosting çözümleriyle de çalışır.
+You can also use VS Code Live Server, GitHub Pages, Netlify, or Vercel.
 
 ---
 
-## Config Örneği
+## Config Example
 
 ```yaml
 profile:
@@ -220,11 +220,11 @@ footer:
 
 ---
 
-## Desteklenen Kart Tipleri
+## Supported Card Types
 
 ### `hero`
 
-Profil bilgilerini gösterir. İçeriği `profile` alanından alır.
+Displays profile information from the `profile` section.
 
 ```yaml
 profile:
@@ -236,7 +236,7 @@ profile:
 
 ### `links`
 
-Başlıklı link listesi oluşturur.
+Creates a titled list of links.
 
 ```yaml
 - type: links
@@ -249,7 +249,7 @@ Başlıklı link listesi oluşturur.
 
 ### `projects`
 
-Her öğe için ayrı kart üretir. Feature, proje, servis veya açıklama kartları için kullanılabilir. `tags` alanı isteğe bağlıdır.
+Creates individual cards for each item. Useful for projects, features, or services. `tags` are optional.
 
 ```yaml
 - type: projects
@@ -264,7 +264,7 @@ Her öğe için ayrı kart üretir. Feature, proje, servis veya açıklama kartl
 
 ### `image`
 
-Arka plan görselli kart oluşturur. `url` verilirse kart tıklanabilir olur.
+Creates an image-based card. If `url` is provided, the card becomes clickable.
 
 ```yaml
 - type: image
@@ -275,7 +275,7 @@ Arka plan görselli kart oluşturur. `url` verilirse kart tıklanabilir olur.
 
 ### `title`
 
-Grid içinde tam genişlikte bölüm başlığı oluşturur.
+Creates a full-width section header inside the grid.
 
 ```yaml
 - type: title
@@ -284,9 +284,9 @@ Grid içinde tam genişlikte bölüm başlığı oluşturur.
 
 ---
 
-## Tema Alanları
+## Theme System
 
-`theme` altında açık ve koyu mod için ayrı token setleri tanımlanabilir. Wall, kullanıcının sistem tercihine göre `light` veya `dark` değerlerini otomatik uygular:
+The `theme` section defines light and dark design tokens. Wall automatically applies the correct mode based on the user’s system preference:
 
 ```yaml
 theme:
@@ -315,21 +315,21 @@ theme:
     radius: "16px"
 ```
 
-Her modda desteklenen alanlar `background`, `foreground`, `card`, `cardForeground`, `primary`, `primaryForeground`, `muted`, `mutedForeground`, `border` ve `radius` değerleridir. Bu değerler sırasıyla `--background`, `--foreground`, `--card`, `--card-foreground`, `--primary`, `--primary-foreground`, `--muted`, `--muted-foreground`, `--border` ve `--radius` CSS değişkenlerine uygulanır.
+Each mode supports `background`, `foreground`, `card`, `cardForeground`, `primary`, `primaryForeground`, `muted`, `mutedForeground`, `border`, and `radius`. These map to CSS variables used throughout the UI.
 
 ---
 
-## Yeni Kart Tipi Ekleme
+## Adding a New Card Type
 
-1. `assets/js/components/` içine yeni component dosyası ekleyin.
-2. Component fonksiyonunu HTML string döndürecek şekilde yazın.
-3. `assets/js/core/render.js` içinde import edin.
-4. `cardRenderers` map içine yeni `type` değerini ekleyin.
-5. Gerekirse `assets/css/components/` altında stil dosyası oluşturup `assets/css/style.css` içine import edin.
+1. Add a new component file under `assets/js/components/`.
+2. Write a function that returns an HTML string.
+3. Import it in `assets/js/core/render.js`.
+4. Add it to the `cardRenderers` map using a new `type`.
+5. Optionally add styles under `assets/css/components/` and import them in `assets/css/style.css`.
 
 ---
 
-## Lisans
+## License
 
-MIT © Arda  
-<http://aardaakpinar.github.io>
+MIT © Arda
+[http://aardaakpinar.github.io](http://aardaakpinar.github.io)
