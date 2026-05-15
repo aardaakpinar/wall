@@ -86,7 +86,7 @@ You can use Wall via CDN without copying the project. You only need an `index.ht
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/scripts/main.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.2/assets/scripts/main.js"></script>
 </body>
 </html>
 ```
@@ -96,7 +96,7 @@ This approach is ideal for fast deployment. All content and theme settings come 
 CDN URL:
 
 ```text
-https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/scripts/main.js
+https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.2/assets/scripts/main.js
 ```
 
 ---
