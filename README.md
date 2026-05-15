@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100px" src="assets/img/logo.png" alt="Wall logo" />
+  <img width="100px" src="assets/images/logo.png" alt="Wall logo" />
   <h1 align="center">Wall</h1>
 </p>
 
@@ -31,19 +31,20 @@ The content of the page is defined through several key sections in `config.yaml`
 
 ## Screenshot
 
-![Wall](assets/img/example.png)
+![Wall](assets/images/example.png)
 
 ---
 
 ## How It Works
 
 1. `index.html` loads the Wall JS file as an ES module (local or CDN version).
-2. `loadConfig()` fetches `config.yaml` and parses it using `js-yaml`.
-3. `applyTheme()` maps theme values to CSS variables if defined.
-4. `createLayout()` builds the `.container` and `.bento-grid` structure.
-5. Each item in `config.main` is rendered via the appropriate function in the `cardRenderers` map.
-6. The generated HTML is injected into the grid.
-7. If `footer.enabled` is not false, the default Wall footer is added.
+2. `main.js` injects `assets/styles/main.css` into the document head.
+3. `loadConfig()` fetches `config.yaml` and parses it using `js-yaml`.
+4. `applyTheme()` maps theme values to CSS variables if defined.
+5. `createLayout()` builds the `.container` and `.bento-grid` structure.
+6. Each item in `config.main` is rendered via the appropriate function in the `cardRenderers` map.
+7. The generated HTML is injected into the grid.
+8. If `footer.enabled` is not false, the default Wall footer is added.
 
 > Note: Since `config.yaml` is loaded via `fetch`, you must run the project on a local server instead of opening it directly with `file://`.
 
@@ -82,23 +83,20 @@ You can use Wall via CDN without copying the project. You only need an `index.ht
   <meta name="twitter:image" content="https://example.com/preview.png">
 
   <link rel="icon" href="favicon.png">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/css/style.css">
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
-  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/js/app.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/scripts/main.js"></script>
 </body>
 </html>
 ```
 
 This approach is ideal for fast deployment. All content and theme settings come from `config.yaml`, while meta tags remain in HTML for better SEO and social preview support.
 
-CDN URLs:
+CDN URL:
 
 ```text
-https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/css/style.css
-https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/js/app.js
+https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/scripts/main.js
 ```
 
 ---
@@ -110,20 +108,20 @@ https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v0.0.1/assets/js/app.js
 ├── index.html
 ├── config.yaml
 ├── assets/
-│   ├── css/
+│   ├── styles/
 │   │   ├── base.css
 │   │   ├── layout.css
-│   │   ├── style.css
+│   │   ├── main.css
 │   │   └── components/
-│   ├── img/
-│   └── js/
-│       ├── app.js
+│   ├── images/
+│   └── scripts/
+│       ├── main.js
 │       ├── core/
 │       └── components/
 └── README.md
 ```
 
-`assets/style.css` contains the legacy single-file stylesheet. The current build uses `assets/css/style.css`.
+The browser only needs `assets/scripts/main.js`; it loads `assets/styles/main.css` automatically.
 
 ---
 
@@ -153,7 +151,7 @@ profile:
   title: YAML-Based Bento Grid System
   description: >
     Wall is a fully configurable, static-first Bento Grid engine.
-  avatar: assets/img/logo.png
+  avatar: assets/images/logo.png
   socials:
     - name: github
       url: https://github.com/aardaakpinar/wall
@@ -231,7 +229,7 @@ profile:
   name: Arda
   title: Developer
   description: Minimal web experiences.
-  avatar: assets/img/avatar.png
+  avatar: assets/images/avatar.png
 ```
 
 ### `links`
@@ -268,7 +266,7 @@ Creates an image-based card. If `url` is provided, the card becomes clickable.
 
 ```yaml
 - type: image
-  image: assets/img/example.png
+  image: assets/images/example.png
   alt: Preview
   url: https://example.com
 ```
@@ -321,11 +319,11 @@ Each mode supports `background`, `foreground`, `card`, `cardForeground`, `primar
 
 ## Adding a New Card Type
 
-1. Add a new component file under `assets/js/components/`.
+1. Add a new component file under `assets/scripts/components/`.
 2. Write a function that returns an HTML string.
-3. Import it in `assets/js/core/render.js`.
+3. Import it in `assets/scripts/core/render.js`.
 4. Add it to the `cardRenderers` map using a new `type`.
-5. Optionally add styles under `assets/css/components/` and import them in `assets/css/style.css`.
+5. Optionally add styles under `assets/styles/components/` and import them in `assets/styles/main.css`.
 
 ---
 
