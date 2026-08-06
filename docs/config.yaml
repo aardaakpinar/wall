@@ -1,0 +1,39 @@
+profile:
+    name: Wall Engine
+    title: YAML-Based Bento Grid System
+    description: >
+        Build a fast, static Bento Grid portfolio from a single YAML file.
+        Wall keeps content, layout, links, images, and theme tokens easy to edit.
+    avatar: docs/images/logo.png
+    socials:
+        - name: github
+          url: https://github.com/aardaakpinar/wall
+
+main:
+    - type: hero
+
+    - type: links
+      title: Project Links
+      items:
+          - name: Live Demo
+            url: https://aardaakpinar.github.io/wall
+            icon: bx bx-link
+
+          - name: Repository
+            url: https://github.com/aardaakpinar/wall
+            icon: bxl bx-github
+
+    - type: image
+      image: https://picsum.photos/600
+      alt: Random Image
+
+    - type: title
+      text: Blog
+
+    - type: blog
+      items:
+          - url: posts/why-wall
+          - url: posts/customizing-wall
+
+footer:
+    enabled: true
