@@ -4,7 +4,7 @@ profile:
     description: >
         Build a fast, static Bento Grid portfolio from a single YAML file.
         Wall keeps content, layout, links, images, and theme tokens easy to edit.
-    avatar: docs/images/logo.png
+    avatar: https://aardaakpinar.github.io/wall/images/logo.png
     socials:
         - name: github
           url: https://github.com/aardaakpinar/wall
