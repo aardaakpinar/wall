@@ -12,17 +12,6 @@ profile:
 main:
     - type: hero
 
-    - type: links
-      title: Project Links
-      items:
-          - name: Live Demo
-            url: https://aardaakpinar.github.io/wall
-            icon: bx bx-link
-
-          - name: Repository
-            url: https://github.com/aardaakpinar/wall
-            icon: bxl bx-github
-
     - type: image
       image: https://picsum.photos/600
       alt: Random Image
@@ -32,6 +21,7 @@ main:
 
     - type: blog
       items:
+          - url: posts/blog
           - url: posts/why-wall
           - url: posts/customizing-wall
 
