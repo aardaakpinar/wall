@@ -10,15 +10,13 @@
 
 **Wall** generates a modern portfolio interface from a single `config.yaml` file. No backend required, no framework needed, and the repo includes an optional build step for producing optimized JS/CSS assets.
 
-**Full documentation lives in [`wiki/`](https://github.com/aardaakpinar/wall/wiki)** - configuration reference, card types, theming, blog system, custom cards, and deployment guides.
+**Full documentation lives in [`wiki`](https://github.com/aardaakpinar/wall/wiki)** - configuration reference, card types, theming, blog system, custom cards, and deployment guides.
 
 ![ScreenShot](/docs/images/screenshot.png)
 
 ---
 
 ## Quick Start
-
-### Option 1 - CDN (recommended)
 
 Create an `index.html` and a `config.yaml` in your project folder:
 
@@ -40,18 +38,6 @@ Then deploy `index.html` + `config.yaml` to GitHub Pages, Netlify, Vercel, or an
 
 See **[Configuration Reference](https://github.com/aardaakpinar/wall/wiki/Configuration)** for how to write `config.yaml`.
 
-### Option 2 - Local installation with build
-
-```bash
-git clone https://github.com/aardaakpinar/wall.git
-cd wall/docs
-python -m http.server 8000
-# open http://localhost:8000
-```
-
-> `config.yaml` is loaded via `fetch()`, so it must be served over HTTP - opening `index.html` directly with `file://` will not work.
-
-For a built site, serve the `public/` assets and point your HTML to `./main.js` and `./main.css`.
 
 ---
 
