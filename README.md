@@ -2,7 +2,6 @@
   <img width="100px" src="docs/images/logo.svg" alt="Wall logo" />
   <h1>Wall</h1>
   <p><strong>A static, modular Bento Grid portfolio powered by one YAML file</strong></p>
-  <p><a href="https://aardaakpinar.github.io/wall/">Live preview</a></p>
 </div>
 
 ---
