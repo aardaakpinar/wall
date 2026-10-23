@@ -16,14 +16,14 @@ Add a single script tag to an empty page:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Your Name</title>
-  </head>
-  <body>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@ma../src/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio - Your Name</title>
+	</head>
+	<body>
+		<script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v1.1.0/src/main.js"></script>
+	</body>
 </html>
 ```
 
@@ -33,17 +33,17 @@ Put it next to `index.html`. Every card on the page is one entry in `main`:
 
 ```yaml
 profile:
-  name: Your Name
-  title: What you do
-  description: One or two sentences about you.
+    name: Your Name
+    title: What you do
+    description: One or two sentences about you.
 
 main:
-  - type: hero
-  - type: links
-    items:
-      - name: GitHub
-        icon: bxl bx-github
-        url: https://github.com/you
+    - type: hero
+    - type: links
+      items:
+          - name: GitHub
+            icon: bxl bx-github
+            url: https://github.com/you
 ```
 
 ## 3. Publish

@@ -13,14 +13,14 @@ No install, no build. Create an `index.html` with one script tag:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Your Name</title>
-  </head>
-  <body>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@ma../src/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio - Your Name</title>
+	</head>
+	<body>
+		<script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/src/main.js"></script>
+	</body>
 </html>
 ```
 
@@ -28,17 +28,17 @@ Then add a `config.yaml` next to it and upload both files to any static host (Gi
 
 ```yaml
 profile:
-  name: Your Name
-  title: What you do
-  description: One or two sentences about you.
+    name: Your Name
+    title: What you do
+    description: One or two sentences about you.
 
 main:
-  - type: hero
-  - type: links
-    items:
-      - name: GitHub
-        icon: bxl bx-github
-        url: https://github.com/you
+    - type: hero
+    - type: links
+      items:
+          - name: GitHub
+            icon: bxl bx-github
+            url: https://github.com/you
 ```
 
 Replace `@main` with a release tag to pin your site to a fixed version. Relative image paths in `config.yaml` load from your own site. See the [wiki](https://github.com/aardaakpinar/wall/wiki) for every card type and theme option.
@@ -71,10 +71,10 @@ import { cardClass } from "../../core/card.js";
 import { escapeHtml } from "../../core/html.js";
 
 export default defineComponent({
-  type: "quote", // the `type:` value in config.yaml
-  styles: new URL("./quote.css", import.meta.url).href,
-  render: (card) => `<blockquote class="${cardClass(card, "quote-card")}">${escapeHtml(card.text)}</blockquote>`,
-  // optional: load(card, ctx) fetches data, mount(root, card, ctx, data) adds behavior
+	type: "quote", // the `type:` value in config.yaml
+	styles: new URL("./quote.css", import.meta.url).href,
+	render: (card) => `<blockquote class="${cardClass(card, "quote-card")}">${escapeHtml(card.text)}</blockquote>`,
+	// optional: load(card, ctx) fetches data, mount(root, card, ctx, data) adds behavior
 });
 ```
 
