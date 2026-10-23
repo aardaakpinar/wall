@@ -1,0 +1,7 @@
+.section-title {
+	grid-column: 1 / -1;
+	margin: 40px 0 8px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid var(--foreground);
+}
+.section-title h2 { font: 800 clamp(2rem, 4vw, 3rem)/1 var(--font-display); text-transform: uppercase; }

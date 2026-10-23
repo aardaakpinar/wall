@@ -1,0 +1,27 @@
+.card {
+	position: relative;
+	background-color: var(--card);
+	background-image: var(--grain);
+	color: var(--card-foreground);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: clamp(18px, 2.4vw, 28px);
+	min-height: 0;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.row-span-2 { grid-row: span 2; }
+.row-span-3 { grid-row: span 3; }
+.row-span-4 { grid-row: span 4; }
+
+@media (min-width: 640px) {
+	.col-span-2, .col-span-3, .col-span-4 { grid-column: span 2; }
+}
+@media (min-width: 1024px) {
+	.col-span-3 { grid-column: span 3; }
+	.col-span-4 { grid-column: span 4; }
+}
+
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.card-title { font: 700 1.5rem/1 var(--font-display); text-transform: uppercase; }
+.card-description { color: var(--muted-foreground); font-size: 14px; margin-bottom: 12px; }

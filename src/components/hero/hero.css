@@ -1,0 +1,110 @@
+:where(.hero-card) {
+	grid-column: 1 / -1;
+}
+@media (min-width: 640px) {
+	:where(.hero-card) {
+		grid-column: span 2;
+	}
+}
+@media (min-width: 1024px) {
+	:where(.hero-card) {
+		grid-row: span 2;
+	}
+}
+
+.hero-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 28px;
+	min-height: 22rem;
+	overflow: hidden;
+	background-color: var(--hero);
+	border-color: transparent;
+	color: #fff;
+}
+
+/* Running-bond brickwork fading in from the right edge. */
+.hero-wall {
+	position: absolute;
+	inset: 0 0 0 35%;
+	pointer-events: none;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='48'%3E%3Cpath d='M0 .5H72M0 24.5H72M.5 0V24M36.5 24V48' stroke='%23fff' stroke-opacity='.2' fill='none'/%3E%3C/svg%3E");
+	-webkit-mask-image: linear-gradient(to left, #000, transparent);
+	mask-image: linear-gradient(to left, #000, transparent);
+}
+
+.hero-card > * {
+	position: relative;
+}
+
+.hero-top {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.avatar {
+	width: 52px;
+	height: 52px;
+	padding: 4px;
+	border-radius: var(--radius);
+	object-fit: contain;
+	flex-shrink: 0;
+}
+.avatar.placeholder {
+	display: grid;
+	place-items: center;
+	font: 800 1.75rem/1 var(--font-display);
+	color: var(--hero);
+}
+
+.hero-top .title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.hero-card h1 {
+	font: 800 clamp(3.4rem, 9vw, 7.5rem)/0.86 var(--font-display);
+	text-transform: uppercase;
+	overflow-wrap: anywhere;
+}
+
+.hero-card .description {
+	max-width: 38ch;
+	font-size: 16px;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.86);
+}
+
+.socials-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 28px;
+	list-style: none;
+}
+
+.social-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	border-radius: var(--radius);
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	text-transform: capitalize;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+.social-link:hover {
+	background: #fff;
+	color: var(--hero);
+}
+.hero-card :focus-visible {
+	outline-color: #fff;
+}

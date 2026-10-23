@@ -1,0 +1,16 @@
+.project-card { padding: 0; overflow: hidden; }
+.project-card:hover { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+.project-item-single { display: block; height: 100%; padding: clamp(18px, 2.4vw, 28px); color: inherit; text-decoration: none; }
+
+.project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.project-name { font: 700 1.75rem/1 var(--font-display); }
+.project-description { color: var(--muted-foreground); font-size: 15px; line-height: 1.55; margin-bottom: 16px; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+	padding: 3px 9px;
+	border: 1px solid var(--border);
+	border-radius: calc(var(--radius) - 2px);
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--muted-foreground);
+}

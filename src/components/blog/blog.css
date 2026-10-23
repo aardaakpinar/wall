@@ -1,0 +1,78 @@
+.blog-post-card { cursor: pointer; padding: 0; }
+.blog-post-card:hover { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+.blog-post-card .card-inner {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: 100%;
+	padding: clamp(18px, 2.4vw, 28px);
+}
+
+.blog-post-meta { display: flex; gap: 14px; font-size: 13px; color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+.blog-post-card .project-name { font-size: 2rem; line-height: 1; }
+.blog-post-card .project-description { margin-bottom: 0; max-width: 46ch; }
+.blog-post-card .project-tags { margin-top: auto; }
+
+@media (min-width: 1024px) {
+	.post-feature { grid-row: span 2; }
+	.post-feature .project-name { font-size: clamp(2.6rem, 4.4vw, 4rem); line-height: 0.92; }
+	.post-feature .project-description { font-size: 17px; }
+}
+
+/* Reading panel */
+#blog-modal { position: fixed; inset: 0; z-index: 9999; }
+.blog-modal-overlay { width: 100%; height: 100%; display: flex; justify-content: flex-end; background: rgba(14, 13, 22, 0.6); }
+
+@keyframes panel-in { from { transform: translateX(32px); opacity: 0; } to { transform: none; opacity: 1; } }
+.blog-modal-content {
+	width: min(100%, 720px);
+	height: 100%;
+	overflow-y: auto;
+	background: var(--card);
+	border-left: 1px solid var(--border);
+	padding: 0 clamp(20px, 4vw, 48px) 64px;
+	animation: panel-in 0.25s ease;
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted-foreground) transparent;
+}
+@media (prefers-reduced-motion: reduce) { .blog-modal-content { animation: none; } }
+
+.blog-modal-head {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 0;
+	background: var(--card);
+	border-bottom: 1px solid var(--border);
+}
+.blog-modal-close {
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	background: none;
+	color: var(--foreground);
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+}
+.blog-modal-close:hover { background: var(--foreground); color: var(--card); }
+
+.blog-modal-body { max-width: 62ch; padding-top: 28px; font-size: 17px; line-height: 1.7; }
+.blog-modal-body > :first-child { margin-top: 0; }
+.blog-modal-body p { margin-bottom: 1.1em; }
+.blog-modal-body h1, .blog-modal-body h2, .blog-modal-body h3 { font-family: var(--font-display); text-transform: uppercase; line-height: 1; margin: 1.8em 0 0.5em; }
+.blog-modal-body h1 { font-size: 3rem; font-weight: 800; margin-top: 0; }
+.blog-modal-body h2 { font-size: 1.9rem; font-weight: 800; }
+.blog-modal-body h3 { font-size: 1.4rem; font-weight: 700; }
+.blog-modal-body ul, .blog-modal-body ol { margin: 0 0 1.1em; padding-left: 1.3em; }
+.blog-modal-body li { margin-bottom: 0.3em; }
+.blog-modal-body li::marker { color: var(--primary); }
+.blog-modal-body a { color: var(--primary); text-underline-offset: 3px; }
+.blog-modal-body img { max-width: 100%; border-radius: var(--radius); margin: 1em 0; }
+.blog-modal-body code { background: var(--muted); padding: 0.15em 0.4em; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; }
+.blog-modal-body pre { background: var(--muted); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; margin-bottom: 1.2em; line-height: 1.55; }
+.blog-modal-body pre code { background: none; padding: 0; }

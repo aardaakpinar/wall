@@ -48,17 +48,15 @@ Multiple blog components can even exist on the same page. Each instance receives
 
 ## Reliable Markdown Rendering
 
-Wall uses the popular **marked** library to convert Markdown into HTML.
+Wall ships its own small Markdown reader, so there is no dependency to install or update. It understands headings, paragraphs, lists, quotes, code blocks, links, images, bold, italic and inline code.
 
-Although rendering errors are uncommon, the system is designed to recover gracefully if parsing fails.
-
-Instead of displaying a broken page, Wall escapes the raw text and converts paragraph breaks into HTML paragraphs. The formatting may be simpler, but the content remains readable and, most importantly, the page never crashes because of a malformed Markdown file.
+Every piece of text is escaped before it is turned into HTML. A raw `<script>` tag in a post is shown as text instead of running, and the page never crashes because of a malformed Markdown file.
 
 ## Security Comes First
 
 Rendering user-generated content always requires careful handling.
 
-Before any content from `config.yaml` or Markdown files is injected into the DOM, Wall processes it through a set of helper utilities located in `src/scripts/core/html.js`.
+Before any content from `config.yaml` or Markdown files is injected into the DOM, Wall processes it through a set of helper utilities located in `src/core/html.js`.
 
 These utilities are responsible for:
 
@@ -72,29 +70,14 @@ The `sanitizeHtml()` helper specifically removes potentially dangerous elements 
 
 This provides solid protection against common XSS and link injection attacks while keeping the implementation lightweight. Since the sanitizer intentionally focuses on the most common attack vectors, blog content should still come from trusted sources whenever possible.
 
-## Resolving Asset URLs Automatically
+## Assets Load From Your Site
 
-Wall also simplifies the way static assets are referenced.
-
-The `resolvePackageUrl()` helper converts relative asset paths into absolute URLs based on the package's runtime location. This applies to profile avatars, image cards, and any other asset that relies on relative paths.
-
-The behavior is straightforward:
-
-* Empty paths are returned unchanged.
-* External URLs (`http://`, `https://`, or protocol-relative URLs) are preserved.
-* Anchor links beginning with `#` remain untouched.
-* All other relative paths are resolved against the package's base URL.
-
-The base URL itself is determined automatically at runtime.
-
-When Wall is loaded from a built distribution, the loader calculates the correct base directory differently than when it's loaded directly from the source or a CDN. This allows the same configuration to work seamlessly across different deployment environments.
-
-For projects that need additional control, developers can explicitly define `window.__WALL_PACKAGE_BASE_URL__`. During startup, Wall detects this value and uses it as the package base instead of relying on automatic detection.
+Relative paths in `config.yaml`, such as the avatar or an image card, are resolved against the page that uses Wall. Put your pictures next to your own `index.html` and refer to them by name. External URLs (`http://`, `https://`, or protocol-relative) are left untouched.
 
 ## Final Thoughts
 
 Wall's blog system is intentionally simple, but simplicity doesn't mean sacrificing quality.
 
-By combining Markdown-based content, graceful error handling, built-in HTML sanitization, and automatic asset resolution, it provides a reliable blogging experience without introducing unnecessary complexity.
+By combining Markdown-based content, graceful error handling, built-in HTML escaping, and simple asset paths, it provides a reliable blogging experience without introducing unnecessary complexity.
 
 Whether you're building a personal portfolio, documentation site, or a fully static website, Wall offers a clean and developer-friendly foundation for publishing content while keeping both security and maintainability in mind.

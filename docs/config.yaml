@@ -1,12 +1,13 @@
 profile:
     name: Wall Engine
-    title: YAML-Based Bento Grid System
+    title: YAML-based Bento Grid system
     description: >
         Build a fast, static Bento Grid portfolio from a single YAML file.
-        Wall keeps content, layout, links, images, and theme tokens easy to edit.
-    avatar: https://aardaakpinar.github.io/wall/images/logo.png
+        Add one script tag and Wall does the rest.
+    avatar: images/logo.svg
     socials:
         - name: github
+          label: GitHub
           url: https://github.com/aardaakpinar/wall
 
 main:
@@ -14,17 +15,44 @@ main:
 
     - type: image
       image: https://picsum.photos/600
-      alt: Random Image
+      alt: A portfolio built with Wall
       cols: 2
+      rows: 2
+
+    - type: links
+      title: Project links
+      cols: 4
+      items:
+          - { name: Documentation, icon: bx-book, url: "https://github.com/aardaakpinar/wall/wiki" }
+          - { name: Repository, icon: bxl bx-github, url: "https://github.com/aardaakpinar/wall" }
 
     - type: title
       text: Blog
 
     - type: blog
       items:
-          - url: posts/blog
+          - url: posts/get-started
           - url: posts/why-wall
-          - url: posts/customizing-wall
+          - url: posts/blog
+
+    - type: title
+      text: Feature
+
+    - type: projects
+      items:
+          - name: Card renderers
+            description: One small module per card type. Each returns escaped HTML.
+            tags: [hero, links, image]
+            url: "https://aardaakpinar.github.io/wall"
+          - name: Theme tokens
+            description: Colors and radius come from CSS variables.
+            tags: [css]
+          - name: Reading panel
+            description: Opens posts beside the grid. Esc closes it.
+            tags: [a11y]
+          - name: Image cards
+            description: Full-bleed pictures with a caption plate.
+            tags: [image, link]
 
 footer:
     enabled: true
