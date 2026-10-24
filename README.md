@@ -33,14 +33,6 @@ main:
 
 Replace `@main` with a release tag to pin your site to a fixed version. Relative image paths in `config.yaml` load from your own site.
 
-### Documentation & Guides
-
-Full documentation and guides are available on the [Wall Wiki](https://github.com/aardaakpinar/wall/wiki):
-
-- [Home](https://github.com/aardaakpinar/wall/wiki) — Architecture overview, lifecycle flow, and core design principles.
-- [Configuration](https://github.com/aardaakpinar/wall/wiki/Configuration) — Complete reference for `config.yaml`, card types (`hero`, `links`, `projects`, `image`, `title`, `blog`), grid span rules, and light/dark theme custom properties.
-- [Blog](https://github.com/aardaakpinar/wall/wiki/Blog) — Markdown blog post setup, frontmatter schema, reading time calculation, side reading panel features, and security sanitization.
-
 ---
 
 ## Development
