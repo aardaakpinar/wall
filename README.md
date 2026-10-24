@@ -8,7 +8,7 @@
 
 ## Add Wall to your site
 
-No install, no build. `<body>` içine script etiketini ekleyin:
+No installation, no build process. Add a script tag inside the <body>:
 
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/src/main.js"></script>
