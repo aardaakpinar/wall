@@ -11,7 +11,7 @@
 No installation, no build process. Add a script tag inside the <body>:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@main/src/main.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/aardaakpinar/wall@[VERSION]/src/main.js"></script>
 ```
 
 Then add a `config.yaml` next to it and upload both files to any static host (GitHub Pages, Netlify, Vercel).
