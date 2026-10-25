@@ -2,6 +2,7 @@ import "./components/index.js";
 import { loadConfig } from "./core/config.js";
 import { applyTheme } from "./core/theme.js";
 import { getComponent, loadStyles } from "./core/component.js";
+import { loadIcons } from "./core/icons.js";
 import { createLayout, createFooter } from "./core/layout.js";
 
 async function buildSlot(card, ctx) {
@@ -20,7 +21,7 @@ async function buildSlot(card, ctx) {
 		return null;
 	}
 
-	await loadStyles(component.styles);
+	await Promise.all([loadStyles(component.styles), loadIcons(component.icons?.(card, ctx, data))]);
 
 	const slot = document.createElement("div");
 
@@ -46,12 +47,13 @@ async function init() {
 	const { container, grid } = createLayout();
 	const built = (await Promise.all(config.main.map((card) => buildSlot(card, ctx)))).filter(Boolean);
 
-	built.forEach(({ slot, mount }) => {
-		grid.appendChild(slot);
-		mount();
-	});
+	// Stagger index first, then one insertion, so the browser lays the grid out once.
+	const fragment = document.createDocumentFragment();
 
-	grid.querySelectorAll(".slot > *").forEach((el, i) => el.style.setProperty("--i", i));
+	built.flatMap(({ slot }) => [...slot.children]).forEach((el, i) => el.style.setProperty("--i", i));
+	built.forEach(({ slot }) => fragment.appendChild(slot));
+	grid.appendChild(fragment);
+	built.forEach(({ mount }) => mount());
 
 	const footer = createFooter(config);
 

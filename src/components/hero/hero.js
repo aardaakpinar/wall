@@ -56,6 +56,10 @@ export default defineComponent({
 	type: "hero",
 	styles: new URL("./hero.css", import.meta.url).href,
 
+	icons(card, { config }) {
+		return resolveHero(card, config).socials ? ["brands"] : [];
+	},
+
 	isEmpty(card, { config }) {
 		const hero = resolveHero(card, config);
 

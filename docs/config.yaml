@@ -12,10 +12,10 @@ profile:
 
 main:
     - type: hero
-      show: { avatar: false, title: false }
 
     - type: image
-      image: https://picsum.photos/600
+      image: https://picsum.photos/600.webp
+      priority: true
       alt: A portfolio built with Wall
       cols: 2
       rows: 2

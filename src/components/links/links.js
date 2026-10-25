@@ -1,10 +1,15 @@
 import { defineComponent } from "../../core/component.js";
 import { cardClass } from "../../core/card.js";
+import { iconSetOf } from "../../core/icons.js";
 import { escapeAttribute, escapeHtml, safeUrl } from "../../core/html.js";
 
 export default defineComponent({
 	type: "links",
 	styles: new URL("./links.css", import.meta.url).href,
+
+	icons(card) {
+		return (card.items ?? []).map((link) => iconSetOf(link.icon || "bx-link"));
+	},
 
 	isEmpty(card) {
 		return !card.items?.length;
