@@ -6,6 +6,10 @@ export default defineComponent({
 	type: "projects",
 	styles: new URL("./projects.css", import.meta.url).href,
 
+	isEmpty(card) {
+		return !card.items?.length;
+	},
+
 	render(card) {
 		return (card.items ?? [])
 			.map(

@@ -4,6 +4,7 @@
 //     type: "hero",                              // value of `type:` in config.yaml
 //     styles: new URL("./hero.css", import.meta.url).href,   // loaded only when used
 //     load(card, ctx)            { ... },        // optional, async data (fetch)
+//     isEmpty(card, ctx, data)   { ... },        // optional, true = nothing to show: no render, no CSS
 //     render(card, ctx, data)    { return "<html>"; },
 //     mount(root, card, ctx, data) { ... },      // optional, behavior after insertion
 //   });

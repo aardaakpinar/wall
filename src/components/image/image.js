@@ -7,6 +7,10 @@ export default defineComponent({
 	type: "image",
 	styles: new URL("./image.css", import.meta.url).href,
 
+	isEmpty(card) {
+		return !safeUrl(resolveAssetUrl(card.image), "");
+	},
+
 	render(card) {
 		const src = safeUrl(resolveAssetUrl(card.image), "");
 		const open = card.url ? `<a href="${escapeAttribute(safeUrl(card.url))}" class="image-card-link">` : "";

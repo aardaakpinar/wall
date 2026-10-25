@@ -5,15 +5,23 @@ import { getComponent, loadStyles } from "./core/component.js";
 import { createLayout, createFooter } from "./core/layout.js";
 
 async function buildSlot(card, ctx) {
-	const component = getComponent(card.type);
+	const component = getComponent(card?.type);
 
 	if (!component) {
-		console.warn("Unknown card type:", card.type);
+		console.warn("Unknown card type:", card?.type);
 		return null;
 	}
 
-	// Fetch data and the component's own CSS in parallel, then render.
-	const [data] = await Promise.all([component.load?.(card, ctx), loadStyles(component.styles)]);
+	// Fetch data first. A card with nothing to show is dropped before its CSS is requested.
+	const data = await component.load?.(card, ctx);
+
+	if (component.isEmpty?.(card, ctx, data)) {
+		console.info(`Skipped empty "${card.type}" card.`);
+		return null;
+	}
+
+	await loadStyles(component.styles);
+
 	const slot = document.createElement("div");
 
 	slot.className = "slot";

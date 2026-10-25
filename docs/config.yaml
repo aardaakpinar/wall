@@ -12,6 +12,7 @@ profile:
 
 main:
     - type: hero
+      show: { avatar: false, title: false }
 
     - type: image
       image: https://picsum.photos/600

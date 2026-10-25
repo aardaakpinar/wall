@@ -10,10 +10,15 @@
 	transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.row-span-1 { grid-row: span 1; }
 .row-span-2 { grid-row: span 2; }
 .row-span-3 { grid-row: span 3; }
 .row-span-4 { grid-row: span 4; }
 
+/* The grid has 1 column on phones, 2 on tablets and 4 on desktop,
+   so a span is capped to what the current breakpoint can hold. */
+.col-span-1 { grid-column: span 1; }
+.col-full { grid-column: 1 / -1; }
 @media (min-width: 640px) {
 	.col-span-2, .col-span-3, .col-span-4 { grid-column: span 2; }
 }

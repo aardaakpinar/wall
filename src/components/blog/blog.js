@@ -14,6 +14,10 @@ export default defineComponent({
 		return posts.filter(Boolean);
 	},
 
+	isEmpty(card, ctx, posts) {
+		return !posts?.length;
+	},
+
 	render(card, ctx, posts) {
 		// With exactly three posts the first one is featured (two rows tall).
 		const feature = posts.length === 3 && !card.cols && !card.colSpan && !card.columns;

@@ -6,6 +6,10 @@ export default defineComponent({
 	type: "links",
 	styles: new URL("./links.css", import.meta.url).href,
 
+	isEmpty(card) {
+		return !card.items?.length;
+	},
+
 	render(card) {
 		return `
 			<div class="${cardClass(card)}">

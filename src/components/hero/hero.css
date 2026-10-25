@@ -17,7 +17,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 28px;
-	min-height: 22rem;
+	min-height: var(--hero-min-height, 22rem);
 	overflow: hidden;
 	background-color: var(--hero);
 	border-color: transparent;
@@ -84,6 +84,7 @@
 	margin-top: 28px;
 	list-style: none;
 }
+.socials-list:first-child { margin-top: 0; }
 
 .social-link {
 	display: inline-flex;
