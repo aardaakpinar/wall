@@ -7,7 +7,7 @@
 	const script = document.createElement("script");
 
 	script.type = "module";
-	script.src = local ? new URL("../src/main.js", me.src).href : "https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v1.1.1/src/main.js";
+	script.src = local ? new URL("../src/main.js", me.src).href : "https://cdn.jsdelivr.net/gh/aardaakpinar/wall@v1.1.2/src/main.js";
 
 	if (me.dataset.wallConfig) {
 		script.dataset.wallConfig = me.dataset.wallConfig;
